@@ -111,12 +111,23 @@ router.get('/vnpay_return', function (req, res, next) {
     let hmac = crypto.createHmac("sha512", secretKey);
     let signed = hmac.update(new Buffer(signData, 'utf-8')).digest("hex");
 
-    if (secureHash === signed) {
-        //Kiem tra xem du lieu trong db co hop le hay khong va thong bao ket qua
+    // if (secureHash === signed) {
+    //     //Kiem tra xem du lieu trong db co hop le hay khong va thong bao ket qua
 
-        res.render('success', { code: vnp_Params['vnp_ResponseCode'] })
+    //     res.render('success', { code: vnp_Params['vnp_ResponseCode'] })
+    // } else {
+    //     res.render('success', { code: '97' })
+    // }
+
+    // 🔥 URL FRONTEND (Vercel)
+    const FRONTEND_URL = 'https://darion-shop.vercel.app/';
+
+    if (secureHash === signed && vnp_Params['vnp_ResponseCode'] === '00') {
+        // ✅ THANH TOÁN THÀNH CÔNG
+        return res.redirect(`${FRONTEND_URL}/?payment=success`);
     } else {
-        res.render('success', { code: '97' })
+        // ❌ THANH TOÁN THẤT BẠI
+        return res.redirect(`${FRONTEND_URL}/?payment=fail`);
     }
 });
 
