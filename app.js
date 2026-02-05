@@ -10,11 +10,17 @@ const cors = require('cors');
 
 var app = express();
 
+const cors = require('cors');
+
 app.use(cors({
-  origin: 'https://darion-shop.vercel.app/',
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  origin: [
+    'http://localhost:5173',
+    'https://darion-shop.vercel.app'
+  ],
+  methods: ['GET', 'POST'],
+  credentials: true
 }));
+
 
 app.use(express.json());
 
@@ -58,4 +64,5 @@ const port = process.env.PORT || 8888;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
 
