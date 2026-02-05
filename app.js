@@ -7,10 +7,7 @@ var bodyParser = require('body-parser');
 var order = require('./routes/order');
 const cors = require('cors');
 
-
 var app = express();
-
-const cors = require('cors');
 
 app.use(cors({
   origin: [
@@ -64,5 +61,6 @@ const port = process.env.PORT || 8888;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
 
 
