@@ -127,7 +127,7 @@ router.get('/vnpay_return', function (req, res, next) {
         return res.redirect(`${FRONTEND_URL}/shopping-cart?payment=success`);
     } else {
         // ❌ THANH TOÁN THẤT BẠI
-        return res.redirect(`${FRONTEND_URL}/shopping-cart?payment=success`);
+        return res.redirect(`${FRONTEND_URL}/shopping-cart?payment=fail`);
     }
 });
 
@@ -331,3 +331,4 @@ function sortObject(obj) {
 }
 
 module.exports = router;
+
