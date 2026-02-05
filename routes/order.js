@@ -124,10 +124,10 @@ router.get('/vnpay_return', function (req, res, next) {
 
     if (secureHash === signed && vnp_Params['vnp_ResponseCode'] === '00') {
         // ✅ THANH TOÁN THÀNH CÔNG
-        return res.redirect(`${FRONTEND_URL}/?payment=success`);
+        return res.redirect(`${FRONTEND_URL}/order`);
     } else {
         // ❌ THANH TOÁN THẤT BẠI
-        return res.redirect(`${FRONTEND_URL}/?payment=fail`);
+        return res.redirect(`${FRONTEND_URL}/order`);
     }
 });
 
