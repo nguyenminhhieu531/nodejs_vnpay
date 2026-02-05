@@ -11,7 +11,7 @@ const cors = require('cors');
 var app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://darion-shop.vercel.app/',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
